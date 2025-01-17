@@ -2,7 +2,6 @@ data "aws_vpc" "default_vpc" {
   default = true
 }
 
-
 resource "aws_vpc_peering_connection" "vpc_peering" {
   vpc_id        = data.aws_vpc.default_vpc.id              
   peer_vpc_id   = var.vpc_id        
