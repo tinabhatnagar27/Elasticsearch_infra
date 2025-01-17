@@ -28,11 +28,6 @@ variable "pri-sub2-id" {
   type = string
 }
 
-
-variable "pri-sub3-id" {
-  type = string
-}
-
 variable "default_vpc_cidr" {
   type = string
 }
