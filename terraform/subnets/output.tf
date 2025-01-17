@@ -6,11 +6,7 @@ output "pri-sub-2-id" {
    value = aws_subnet.pri-sub-2.id
 }
 
-output "pri-sub-3-id" {
-   value = aws_subnet.pri-sub-3.id
-}
-
-output "pub-sub-id" {
+output "pub-sub-1-id" {
    value = aws_subnet.pub-sub.id
 }
 
