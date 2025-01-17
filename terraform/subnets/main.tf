@@ -1,5 +1,5 @@
 # public subnet
-resource "aws_subnet" "pub-sub" {
+resource "aws_subnet" "pub-sub1" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.pub-cidr
   availability_zone       = var.pub-sub-az
@@ -29,17 +29,6 @@ resource "aws_subnet" "pri-sub-2" {
     Name = "private-subnet-2"
   }
 }
-
-resource "aws_subnet" "pri-sub-3" {
-  vpc_id                  = var.vpc_id
-  cidr_block              = var.pri-sub-3-cidr
-  availability_zone       = var.pri-sub3-az
-
-  tags = {
-    Name = "private-subnet-3"
-  }
-}
-
 
 # Elastic IP
 resource "aws_eip" "nat" {
