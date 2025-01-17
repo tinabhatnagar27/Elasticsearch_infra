@@ -16,7 +16,7 @@ resource "aws_security_group" "default_vpc_sg" {
     cidr_blocks = [var.vpc_cidr]   
   }
 
-  # Allow all outbound traffic (optional)
+  # Allow all outbound traffic 
   egress {
     from_port   = 0
     to_port     = 0
@@ -36,7 +36,6 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]   
   }
 
-  # Ingress rule for SSH (port 22)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -44,7 +43,6 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]   
   }
 
-  # Ingress rule for HTTP (port 80)
   ingress {
     from_port   = 80
     to_port     = 80
@@ -52,7 +50,6 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Ingress rule for ICMP (ping)
   ingress {
     from_port        = -1               
     to_port          = -1               
@@ -69,26 +66,15 @@ resource "aws_security_group" "public-SG" {
 
 # Private Security Group
 resource "aws_security_group" "private-SG" {
-  vpc_id = var.vpc_id   # Corrected to use 'var.vpc_id'
+  vpc_id = var.vpc_id   
 
-  # Ingress rule for Redis (port 6379) allowing traffic from any IP address
   ingress {
-    from_port   = 6379
-    to_port     = 6379
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  
-  }
-  
-  # Ingress rule for Redis cluster allowing traffic from any IP address
-  ingress {
-    from_port   = 16379
-    to_port     = 16384
+    from_port   = 9200
+    to_port     = 9200
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]  
   }
 
-
-  # Ingress rule for SSH (port 22)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -96,7 +82,6 @@ resource "aws_security_group" "private-SG" {
     cidr_blocks = ["172.31.0.0/16", "0.0.0.0/0"]  
   }
 
-  # Ingress rule for ICMP (ping)
   ingress {
     from_port        = -1               
     to_port          = -1                
@@ -117,22 +102,3 @@ resource "aws_security_group" "private-SG" {
     Name = "private-sg"
   }
 }
-
-/* Generate Key
-resource "tls_private_key" "rsa_4096" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-# Generate public Key 
-resource "aws_key_pair" "key_pair" {
-  key_name   = var.key_name
-  public_key = tls_private_key.rsa_4096.public_key_openssh
-}
-
-# PEM Key download in system
-resource "local_file" "private_key" {
-  content = tls_private_key.rsa_4096.private_key_pem
-  filename = var.key_name
-}
-*/
