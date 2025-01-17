@@ -1,5 +1,5 @@
 # Public EC2 Instance
-resource "aws_instance" "redis-public" {
+resource "aws_instance" "elasticsearch-public" {
   ami           = var.ami-id
   instance_type = var.instance-type
   subnet_id     = var.pub-sub-id
@@ -7,35 +7,35 @@ resource "aws_instance" "redis-public" {
   security_groups = [var.public-sg-id]
   key_name = var.key-name
   provisioner "file" {
-    source      = "/var/lib/jenkins/ninja.pem"  
-    destination = "/home/ubuntu/ninja.pem" 
+    source      = "/var/lib/jenkins/role27.pem"  
+    destination = "/home/ubuntu/role27.pem" 
     connection {
       type        = "ssh"
       user        = "ubuntu"  
-      private_key = file("/var/lib/jenkins/ninja.pem")  
+      private_key = file("/var/lib/jenkins/role27.pem")  
       host        = self.public_ip  
     }
   }
 
   provisioner "remote-exec" {
     inline = [
-      "chmod 400 /home/ubuntu/ninja.pem",  
+      "chmod 400 /home/ubuntu/role27.pem",  
       "echo 'File copied successfully!'"
     ]
     connection {
       type        = "ssh"
       user        = "ubuntu"  
-      private_key = file("/var/lib/jenkins/ninja.pem")  
+      private_key = file("/var/lib/jenkins/role27.pem")  
       host        = self.public_ip  
     }
   }
   tags = {
-    Name = "redis-public"
+    Name = "elasticsearch-public"
   }
 }
 
 # Private EC2 1 Instance
-resource "aws_instance" "redis-private-1" {
+resource "aws_instance" "elasticsearch-private-1" {
   ami           = var.ami-id
   instance_type = var.instance-type
   subnet_id     = var.pri-sub-1-id
@@ -44,12 +44,12 @@ resource "aws_instance" "redis-private-1" {
   key_name = var.key-name
 
   tags = {
-    Name = "redis-private-1"
+    Name = "elasticsearch-private-1"
   }
 }
 
 # Private EC2 2 Instance
-resource "aws_instance" "redis-private-2" {
+resource "aws_instance" "elasticsearch-private-2" {
   ami           = var.ami-id
   instance_type = var.instance-type
   subnet_id     = var.pri-sub-2-id
@@ -58,20 +58,6 @@ resource "aws_instance" "redis-private-2" {
    key_name = var.key-name
 
   tags = {
-    Name = "redis-private-2"
-  }
-}
-
-# Private EC2 3 Instance
-resource "aws_instance" "redis-private-3" {
-  ami           = var.ami-id
-  instance_type = var.instance-type
-  subnet_id     = var.pri-sub-3-id
-  associate_public_ip_address = "false"
-  security_groups = [var.private-sg-id]
-   key_name = var.key-name
-
-  tags = {
-    Name = "redis-private-3"
+    Name = "elasticsearch-private-2"
   }
 }
