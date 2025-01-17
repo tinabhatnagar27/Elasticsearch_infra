@@ -16,14 +16,9 @@ variable "pri-sub2-az" {
   default = "ap-south-1b"
 }
 
-variable "pri-sub3-az" {
-  type = string
-  default = "ap-south-1c"
-}
-
 variable "pub-sub-az" {
   type = string
-  default = "ap-south-1b"
+  default = "ap-south-1a"
 }
 
 variable "pub-cidr" {
@@ -39,9 +34,4 @@ variable "pri-sub-1-cidr" {
 variable "pri-sub-2-cidr" {
   type = string
   default = "10.0.3.0/24"
-}
-
-variable "pri-sub-3-cidr" {
-  type = string
-  default = "10.0.4.0/24"
 }
