@@ -4,9 +4,9 @@
        - ap-south-1
     filters:
       tag:Name:
-        - "redis-private-1"
-        - "redis-private-2"
-        - "redis-private-3"
+        - "elasticsearch-private-1"
+        - "elasticsearch-private-2"
+        - "elasticsearch-private-3"
     compose:
          ansible_host: private_ip_address  
     strict: False
