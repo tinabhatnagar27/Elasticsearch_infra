@@ -1,14 +1,16 @@
-resource "aws_vpc" "elasticsearch-VPC" {
+# VPC
+resource "aws_vpc" "es-VPC" {
   cidr_block = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "elasticsearch-VPC"
+    Name = "es-VPC"
   }
 }
 
+# Internet Gateway
 resource "aws_internet_gateway" "IGW" {
-  vpc_id = aws_vpc.elasticsearch-VPC.id
+  vpc_id = aws_vpc.es-VPC.id
 
   tags = {
     Name = "IGW"
@@ -16,8 +18,9 @@ resource "aws_internet_gateway" "IGW" {
 }
 
 
+#public route table
 resource "aws_route_table" "public-RT" {
-  vpc_id = aws_vpc.elasticsearch-VPC.id
+  vpc_id = aws_vpc.es-VPC.id
 
   route {
     cidr_block = var.pub-rt-cidr
@@ -29,6 +32,7 @@ resource "aws_route_table" "public-RT" {
   }
 }
 
+# Associate Public Route Table with Public Subnet
 resource "aws_route_table_association" "public" {
   subnet_id      = var.pub-sub-id
   route_table_id = aws_route_table.public-RT.id
@@ -40,8 +44,11 @@ resource "aws_route" "RT-1" {
   vpc_peering_connection_id = var.vpc_peering_id
 }
 
+
+
+# private route table
 resource "aws_route_table" "private-RT" {
-  vpc_id = aws_vpc.elasticsearch-VPC.id
+  vpc_id = aws_vpc.es-VPC.id
 
   route {
     cidr_block     = var.pri-rt-cidr
@@ -53,6 +60,8 @@ resource "aws_route_table" "private-RT" {
   }
 }
 
+
+# Associate Private Route Table with Private Subnet
 resource "aws_route_table_association" "private" {
   subnet_id      = var.pri-sub1-id
   route_table_id = aws_route_table.private-RT.id
@@ -62,6 +71,7 @@ resource "aws_route_table_association" "private_association2" {
   subnet_id = var.pri-sub2-id
   route_table_id = aws_route_table.private-RT.id
 }
+
 
 resource "aws_route" "RT-2" {
   route_table_id = aws_route_table.private-RT.id
