@@ -16,7 +16,7 @@ resource "aws_security_group" "default_vpc_sg" {
     cidr_blocks = [var.vpc_cidr]   
   }
 
-  # Allow all outbound traffic 
+  # Allow all outbound traffic (optional)
   egress {
     from_port   = 0
     to_port     = 0
@@ -36,6 +36,7 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]   
   }
 
+  # Ingress rule for SSH (port 22)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -43,6 +44,7 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]   
   }
 
+  # Ingress rule for HTTP (port 80)
   ingress {
     from_port   = 80
     to_port     = 80
@@ -50,6 +52,7 @@ resource "aws_security_group" "public-SG" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Ingress rule for ICMP (ping)
   ingress {
     from_port        = -1               
     to_port          = -1               
@@ -75,6 +78,7 @@ resource "aws_security_group" "private-SG" {
     cidr_blocks = ["0.0.0.0/0"]  
   }
 
+  # Ingress rule for SSH (port 22)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -82,6 +86,7 @@ resource "aws_security_group" "private-SG" {
     cidr_blocks = ["172.31.0.0/16", "0.0.0.0/0"]  
   }
 
+  # Ingress rule for ICMP (ping)
   ingress {
     from_port        = -1               
     to_port          = -1                
