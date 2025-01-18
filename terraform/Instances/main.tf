@@ -7,25 +7,25 @@ resource "aws_instance" "elasticsearch-public" {
   security_groups = [var.public-sg-id]
   key_name = var.key-name
   provisioner "file" {
-    source      = "/var/lib/jenkins/role27.pem"  
-    destination = "/home/ubuntu/role27.pem" 
+    source      = "/var/lib/jenkins/hello_tool.pem"  
+    destination = "/home/ubuntu/hello_tool.pem" 
     connection {
       type        = "ssh"
       user        = "ubuntu"  
-      private_key = file("/var/lib/jenkins/role27.pem")  
+      private_key = file("/var/lib/jenkins/hello_tool.pem")  
       host        = self.public_ip  
     }
   }
 
   provisioner "remote-exec" {
     inline = [
-      "chmod 400 /home/ubuntu/role27.pem",  
+      "chmod 400 /home/ubuntu/hello_tool.pem",  
       "echo 'File copied successfully!'"
     ]
     connection {
       type        = "ssh"
       user        = "ubuntu"  
-      private_key = file("/var/lib/jenkins/role27.pem")  
+      private_key = file("/var/lib/jenkins/hello_tool.pem")  
       host        = self.public_ip  
     }
   }
