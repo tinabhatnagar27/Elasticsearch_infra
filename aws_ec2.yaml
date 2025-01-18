@@ -4,8 +4,8 @@
        - ap-south-1
     filters:
       tag:Name:
-        - "elasticsearch-private-1"
-        - "elasticsearch-private-2"
+        - "es-private-1"
+        - "es-private-2"
     compose:
          ansible_host: private_ip_address  
     strict: False
