@@ -22,8 +22,8 @@ module "security_groups" {
   vpc_cidr = module.vpc.vpc_cidr
 }
 
-module "instance" {
-  source        = "./instances"
+module "Instance" {
+  source        = "./Instances"
   pri-sub-1-id  = module.subnet.pri-sub-1-id
   pri-sub-2-id  = module.subnet.pri-sub-2-id
   pub-sub-id    = module.subnet.pub-sub-id
