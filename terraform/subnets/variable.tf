@@ -16,7 +16,7 @@ variable "pri-sub2-az" {
   default = "ap-south-1b"
 }
 
-variable "pub-sub-az" {
+variable "pub-sub1-az" {
   type = string
   default = "ap-south-1a"
 }
