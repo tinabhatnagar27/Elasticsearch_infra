@@ -1,5 +1,5 @@
 output "vpc_id" {
-  value = aws_vpc.elasticsearch-VPC.id
+  value = aws_vpc.es-VPC.id
 }
 
 output "vpc_cidr" {
