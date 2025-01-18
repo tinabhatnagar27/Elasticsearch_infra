@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/sheetal-nain/redis.git', branch: 'main'
+                git url: 'https://github.com/tinabhatnagar27/Elasticsearch_infra.git', branch: 'main'
             }
         }
 
