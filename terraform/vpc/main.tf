@@ -63,12 +63,6 @@ resource "aws_route_table_association" "private_association2" {
   route_table_id = aws_route_table.private-RT.id
 }
 
-resource "aws_route_table_association" "private_association3" {
-  subnet_id = var.pri-sub3-id
-  route_table_id = aws_route_table.private-RT.id
-}
-
-
 resource "aws_route" "RT-2" {
   route_table_id = aws_route_table.private-RT.id
   destination_cidr_block = var.default_vpc_cidr
