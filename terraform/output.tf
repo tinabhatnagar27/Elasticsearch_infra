@@ -2,15 +2,15 @@ output "vpc_id" {
   value = module.vpc.vpc_id
 }
 
-output "public-subnet1-id" {
-  value = module.subnet.pub-sub1-id
+output "public-subnet-id" {
+  value = module.subnet.pub-sub-id
 }
 
-output "private-subnet-1-id" {
+output "private-subnet1-id" {
   value = module.subnet.pri-sub-1-id
 }
 
-output "private-subnet-2-id" {
+output "private-subnet2-id" {
   value = module.subnet.pri-sub-2-id
 }
 
@@ -23,27 +23,29 @@ output "private-security-groups" {
 }
 
 # Instance ID
-output "elasticsearch-private-1-id" {
-  value = module.Instance.elasticsearch-private-1-id
+output "private-instance1-id" {
+  value = module.instance.private-instance1-id
 }
 
-output "elasticsearch-private-2-id" {
-  value = module.Instance.elasticsearch-private-2-id
+output "private-instance2-id" {
+  value = module.instance.private-instance2-id
 }
 
-output "elasticsearch-public-id" {
-  value = module.Instance.elasticsearch-public-id
+
+output "public-instance-id" {
+  value = module.instance.public-instance-ip
 }
 
 # Instance IP Address
-output "elasticsearch-private-1-ip" {
-  value = module.Instance.elasticsearch-private-1-ip
+output "private-instance1-ip" {
+  value = module.instance.private-instance1-ip
 }
 
-output "elasticsearch-private-2-ip" {
-  value = module.Instance.elasticsearch-private-2-ip
+
+output "private-instance2-ip" {
+  value = module.instance.private-instance2-ip
 }
 
-output "elasticsearch-public-ip" {
-  value = module.Instance.elasticsearch-public-ip
+output "public-instance-ip" {
+  value = module.instance.public-instance-ip
 }
