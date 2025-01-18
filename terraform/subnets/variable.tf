@@ -16,9 +16,9 @@ variable "pri-sub2-az" {
   default = "ap-south-1b"
 }
 
-variable "pub-sub1-az" {
+variable "pub-sub-az" {
   type = string
-  default = "ap-south-1a"
+  default = "ap-south-1b"
 }
 
 variable "pub-cidr" {
