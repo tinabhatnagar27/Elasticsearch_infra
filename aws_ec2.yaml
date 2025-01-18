@@ -6,7 +6,6 @@
       tag:Name:
         - "elasticsearch-private-1"
         - "elasticsearch-private-2"
-        - "elasticsearch-private-3"
     compose:
          ansible_host: private_ip_address  
     strict: False
