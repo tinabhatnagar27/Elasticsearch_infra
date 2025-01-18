@@ -1,25 +1,25 @@
 #instenses ID
-output "elasticsearch-public-id" {
-  value = aws_Instance.elasticsearch-public-id
+output "pub-instance-id" {
+  value = aws_instance.es-public.id
 }
 
-output "elasticsearch-private-1-id" {
-  value = aws_Instance.elasticsearch-private-1-id
+output "private-instance1-id" {
+  value = aws_instance.es-private-1.id
 }
 
-output "elasticsearch-private-2-id" {
-  value = aws_Instance.elasticsearch-private-2-id
+output "private-instance2-id" {
+  value = aws_instance.es-private-2
 }
 
 # instences IP addresses
-output "elasticsearch-public-ip" {
-  value = aws_Instance.elasticsearch-public-ip
+output "public-instance-ip" {
+  value = aws_instance.es-public.public_ip
 }
 
-output "elasticsearch-private-1-ip" {
-  value = aws_Instance.elasticsearch-private-1-ip
+output "private-instance1-ip" {
+  value = aws_instance.es-private-1.private_ip
 }
 
-output "elasticsearch-private-2-ip" {
-  value = aws_Instance.elasticsearch-private-2-ip
+output "private-instance2-ip" {
+  value = aws_instance.es-private-2.private_ip
 }
