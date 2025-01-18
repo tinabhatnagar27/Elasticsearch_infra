@@ -31,19 +31,19 @@ output "elasticsearch-private-2-id" {
   value = module.instance.elasticsearch-private-2-id
 }
 
-output "public-instance-id" {
-  value = module.instance.public-instance-ip
+output "elasticsearch-public-id" {
+  value = module.instance.elasticsearch-public-ip
 }
 
 # Instance IP Address
-output "private-instance1-ip" {
-  value = module.instance.private-instance1-ip
+output "elasticsearch-private-1-ip" {
+  value = module.instance.elasticsearch-private-1-ip
 }
 
-output "private-instance2-ip" {
-  value = module.instance.private-instance2-ip
+output "elasticsearch-private-2-ip" {
+  value = module.instance.elasticsearch-private-2-ip
 }
 
-output "public-instance1-ip" {
-  value = module.instance.public-instance-ip
+output "elasticsearch-public-ip" {
+  value = module.instance.elasticsearch-public-ip
 }
