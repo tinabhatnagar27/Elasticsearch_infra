@@ -4,7 +4,7 @@ module "vpc" {
   nat-gat-id       = module.subnet.nat-gat-id
   pri-sub2-id      = module.subnet.pri-sub-2-id
   pri-sub1-id      = module.subnet.pri-sub-1-id
-  pub-sub-id       = module.subnet.pub-sub1-id
+  pub-sub1-id       = module.subnet.pub-sub1-id
   vpc_peering_id   = module.peering.vpc_peering_id
   default_vpc_cidr = module.peering.default_vpc_cidr
 
@@ -26,7 +26,7 @@ module "Instance" {
   source        = "./Instances"
   pri-sub-1-id  = module.subnet.pri-sub-1-id
   pri-sub-2-id  = module.subnet.pri-sub-2-id
-  pub-sub-id    = module.subnet.pub-sub-id
+  pub-sub1-id    = module.subnet.pub-sub1-id
   private-sg-id = module.security_groups.private-sg-id
   public-sg-id  = module.security_groups.public-sg-id
 }
