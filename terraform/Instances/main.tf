@@ -1,7 +1,7 @@
 # Public EC2 Instance
-resource "aws_Instance" "elasticsearch-public" {
+resource "aws_instance" "es-public" {
   ami           = var.ami-id
-  Instance_type = var.Instance-type
+  instance_type = var.instance-type
   subnet_id     = var.pub-sub-id
   associate_public_ip_address = "true"
   security_groups = [var.public-sg-id]
@@ -30,34 +30,34 @@ resource "aws_Instance" "elasticsearch-public" {
     }
   }
   tags = {
-    Name = "elasticsearch-public"
+    Name = "es-public"
   }
 }
 
 # Private EC2 1 Instance
-resource "aws_instance" "elasticsearch-private-1" {
+resource "aws_instance" "es-private-1" {
   ami           = var.ami-id
-  Instance_type = var.Instance-type
+  instance_type = var.instance-type
   subnet_id     = var.pri-sub-1-id
   associate_public_ip_address = "false"
   security_groups = [var.private-sg-id]
   key_name = var.key-name
 
   tags = {
-    Name = "elasticsearch-private-1"
+    Name = "es-private-1"
   }
 }
 
 # Private EC2 2 Instance
-resource "aws_instance" "elasticsearch-private-2" {
+resource "aws_instance" "es-private-2" {
   ami           = var.ami-id
-  Instance_type = var.Instance-type
+  instance_type = var.instance-type
   subnet_id     = var.pri-sub-2-id
   associate_public_ip_address = "false"
   security_groups = [var.private-sg-id]  
    key_name = var.key-name
 
   tags = {
-    Name = "elasticsearch-private-2"
+    Name = "es-private-2"
   }
 }
