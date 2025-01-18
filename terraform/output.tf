@@ -32,7 +32,7 @@ output "elasticsearch-private-2-id" {
 }
 
 output "elasticsearch-public-id" {
-  value = module.instance.elasticsearch-public-ip
+  value = module.instance.elasticsearch-public-id
 }
 
 # Instance IP Address
