@@ -1,8 +1,8 @@
 # public subnet
-resource "aws_subnet" "pub-sub1" {
+resource "aws_subnet" "pub-sub" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.pub-cidr
-  availability_zone       = var.pub-sub1-az
+  availability_zone       = var.pub-sub-az
 
   tags = {
     Name = "public-subnet"
@@ -38,7 +38,7 @@ resource "aws_eip" "nat" {
 # Nat gatway
 resource "aws_nat_gateway" "Nat-gate" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.pub-sub1.id
+  subnet_id     = aws_subnet.pub-sub.id
 
   tags = {
     Name = "Nat-gate"
