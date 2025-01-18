@@ -6,7 +6,7 @@ variable "private-sg-id" {
   type = string
 }
 
-variable "pub-sub-id" {
+variable "pub-sub1-id" {
   type = string  
 }
 
@@ -23,7 +23,7 @@ variable "ami-id" {
   default = "ami-00bb6a80f01f03502"
 }
 
-variable "instance-type" {
+variable "Instance-type" {
   type = string
   default = "t2.medium"
 }
