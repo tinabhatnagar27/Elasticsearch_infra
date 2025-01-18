@@ -20,7 +20,7 @@ variable "pri-sub-2-id" {
 
 variable "ami-id" {
   type = string
-  default = "ami-0672fd5b9210aa093"
+  default = "ami-00bb6a80f01f03502"
 }
 
 variable "instance-type" {
@@ -30,5 +30,5 @@ variable "instance-type" {
 
 variable "key-name" {
   type = string
-  default = "role27"
+  default = "hello_tool"
 }
