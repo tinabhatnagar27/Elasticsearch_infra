@@ -23,15 +23,15 @@ output "private-security-groups" {
 }
 
 # Instance ID
-output "private-instance1-id" {
-  value = module.instance.private-instance1-id
+output "elasticsearch-private-1-id" {
+  value = module.instance.elasticsearch-private-1-id
 }
 
-output "private-instance2-id" {
-  value = module.instance.private-instance2-id
+output "elasticsearch-private-2-id" {
+  value = module.instance.elasticsearch-private-2-id
 }
 
-output "public-instance1-id" {
+output "public-instance-id" {
   value = module.instance.public-instance-ip
 }
 
