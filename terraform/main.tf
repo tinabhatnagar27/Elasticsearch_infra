@@ -23,10 +23,10 @@ module "security_groups" {
 }
 
 module "Instance" {
-  source        = "./Instances"
+  source        = "./instances"
   pri-sub-1-id  = module.subnet.pri-sub-1-id
   pri-sub-2-id  = module.subnet.pri-sub-2-id
-  pub-sub1-id    = module.subnet.pub-sub1-id
+  pub-sub-id    = module.subnet.pub-sub-id
   private-sg-id = module.security_groups.private-sg-id
   public-sg-id  = module.security_groups.public-sg-id
 }
