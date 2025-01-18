@@ -6,8 +6,8 @@ output "pri-sub-2-id" {
    value = aws_subnet.pri-sub-2.id
 }
 
-output "pub-sub1-id" {
-   value = aws_subnet.pub-sub1.id
+output "pub-sub-id" {
+   value = aws_subnet.pub-sub.id
 }
 
 output "nat-gat-id" {
