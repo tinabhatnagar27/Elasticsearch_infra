@@ -2,7 +2,7 @@
 resource "aws_subnet" "pub-sub1" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.pub-cidr
-  availability_zone       = var.pub-sub-az
+  availability_zone       = var.pub-sub1-az
 
   tags = {
     Name = "public-subnet"
