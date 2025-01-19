@@ -1,6 +1,6 @@
 pipeline {
     parameters {
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
+       // booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
         choice(name: 'action', choices: ['apply', 'destroy'], description: 'Select the action to perform')
     } 
     environment {
@@ -20,23 +20,21 @@ pipeline {
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd terraform/ ; terraform init'
-                sh 'pwd;cd terraform/ ; terraform validate'
-                sh 'pwd;cd terraform/ ; terraform plan'
+                sh 'terraform -chdir=terraform init'
+                sh 'terraform -chdir=terraform validate'
+                sh 'terraform -chdir=terraform plan'
             }
         }
-
         stage('Apply/Destroy') {
             steps {
                 sh 'pwd;cd terraform/ ; terraform ${action} --auto-approve'
             }
         }
 
-        // Adding sleep after terraform apply
         stage('Sleep After Apply') {
             when {
                 expression {
-                    return params.action == 'apply'  // Run this only if action is 'apply'
+                    return params.action == 'apply'  
                 }
             }
             steps {
@@ -45,18 +43,17 @@ pipeline {
             }
         }
 
-        // New stage to run the Ansible playbook with manual approval
         stage('Approve and Run Ansible Playbook') {
             when {
                 expression {
-                    return params.action == 'apply'  // Only run for 'apply' action
+                    return params.action == 'apply'  
                 }
             }
             steps {
                 input message: 'Do you approve running the Ansible playbook?', ok: 'Yes', submitter: 'user'
                 script {
                     echo "Running Ansible Playbook..."
-                    sh 'ansible-playbook -i aws_ec2.yaml playbook.yml'  // Playbook name
+                    sh 'ansible-playbook -i aws_ec2.yaml playbook.yml' 
                 }
             }
         }
