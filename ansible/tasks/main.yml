@@ -45,9 +45,4 @@
     enabled: yes
     state: started
   become: true
-
-- name: Configure network settings
-  template:
-    src: elasticsearch.yml.j2
-    dest: /etc/elasticsearch/elasticsearch.yml
   notify: Restart Elasticsearch
